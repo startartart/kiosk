@@ -1,0 +1,55 @@
+
+    <!-- <form action='/admin' method="post" enctype="multipart/form-data">
+        name<br>
+        <input type="text" name="name"><br>
+        종류 B:햄버거, S:사이드, J:음료, D:디저트<br>
+        <input type="text" name="what"><br>
+        price_picture<br> 
+        <input type="file" name="picture" /><br>
+        단일가격<br>
+        <input type="text" name="single_price"><br>
+        세트가격 (햄버거만 해당)<br>
+        <input type="text" name="set_price"><br>
+        선호도 (높을수록 많이 선호:판매량에 근거)<br>
+        <input type="text" name="preference"><br>
+        시그니처마크 signature:시그니처<br>
+        <input type="text" name="mark"><br><br>
+        <input type="submit" value="제출" >
+      </form> -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+            <title>ADMIN MENU</title>
+            <link rel="stylesheet" type="text/css" href="css/input.css" />
+    </head>
+    <body>
+        <form action="input" method="POST" class="joinForm" onsubmit="DoJoinForm__submit(this); return false;">
+                                                                                               
+            <h2>상품 입력</h2>
+            <div class="textForm">
+                <input name="name" type="text" class="name" placeholder="상품 이름">
+              </div>
+            <div class="textForm">
+              <input name="what" type="text" class="name" placeholder="종류 B:햄버거, S:사이드, J:음료, D:디저트">
+              </input>
+            </div>
+            <div class="textForm">
+              <input name="single_price" type="text" class="name" placeholder="단일가격">
+            </div>
+            <div class="textForm">
+              <input name="set_price" type="text" class="name" placeholder="세트가격 (햄버거만 해당)">
+            </div>
+             <div class="textForm">
+              <input name="preference" type="text" class="name" placeholder="선호도 (높을수록 많이 선호:판매량에 근거)">
+            </div>
+            <div class="textForm">
+              <input name="mark" type="text" class="name" placeholder="시그니처마크 signature:시그니처">
+            </div>
+            <input type="submit" class="btn" value="상 품 입 력"/>
+          </form>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>INDEX</title>
+		<meta name="description" content="Blueprint: Slide and Push Menus" />
+		<meta name="keywords" content="sliding menu, pushing menu, navigation, responsive, menu, css, jquery" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<div class="right">
+			<form style="width:600px;" method="post">
+				<div class="right-main"><h1 align=center>결제</h1></div>
+				<div class="right-menu">
+					<% for (let basket of baskets) { %>
+					<ul>
+						<li><input type="checkbox" name="menu_check" checked onclick="setBg(this)" style="width:100px; height:100px;" value= <%= basket.id%> ></li>
+						<li ><h3 text-align:center><%= basket.name%></h3></li>
+						<li><h3 text-align:center>X<%= basket.quantity%></h3></li>
+					</ul>
+					<% } %>
+				</div>
+				<div class="right-price" align=center>
+					<h3 text-align:center>합계 : <%= sum%> 원<h3>
+				</div>
+				<div class="right-submit" align=center>
+					<a>
+						<button type="submit" class="button">결제</button></a>
+					<a href="/menu?mode=best">
+						<button type="button" class="button">뒤로</button></a>
+				</div>	
+			</form>	
+		</div>
+	</body>
+</html>

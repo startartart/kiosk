@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>MAIN MENU</title>
+		<meta name="description" content="Blueprint: Slide and Push Menus" />
+		<meta name="keywords" content="sliding menu, pushing menu, navigation, responsive, menu, css, jquery" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/modernizr.custom.js"></script>
+		<script src="../public/js/menu.js"></script>
+		<script>
+			function setBg(t) {
+			  td = t.parentNode;
+			  td.style.backgroundColor = (t.checked) ? "#fffff" : "white";
+			  tr = t.parentNode.parentNode;
+			  tr.style.backgroundColor = (t.checked) ? "#fffff" : "white";
+			}
+		  </script>
+	</head>
+
+	<body>
+		<div class="main-container">
+			<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left cbp-spmenu-open" id="cbp-spmenu-s1">
+				<h3>Menu</h3>
+				<a href="?mode=best">추천메뉴</a>
+				<a href="?mode=signature">시그니처버거</a>
+				<a href="?mode=burger">버거&세트</a>
+				<a href="?mode=side">스낵&사이드</a>
+				<a href="?mode=drink">음료</a>
+				<a href="?mode=dessert">디저트</a>
+			</div>
+			<div class="main">
+
+				<% if (mode == 'best') { %> <!-- 추천메뉴-->
+				<section>
+					<ul class="mylist">
+						<% for (let food of foods) { %>
+							<a href="/choice?list=best&price=<%= food.single_price%>&name=<%= food.name%>">
+								<li><img src="/images/<%= food.id%>.png">
+									<ol><%= food.name%></ol>
+									<ol>단품:<%= food.single_price%></ol>
+									<ol>세트:<%= food.set_price%></ol>
+								</li>
+							</a>
+						<% } %>
+					</ul>		
+				</section>
+				<% } %>
+
+				<% if (mode == 'signature') { %> <!-- 시그니처버거-->
+					<section>
+						<ul class="mylist">
+							<% for (let food of foods) { %>
+								<a href="/choice?list=signature&price=<%= food.single_price%>&name=<%= food.name%>">
+									<li><img src="/images/<%= food.id%>.png">
+										<ol><%= food.name%></ol>
+										<ol>단품:<%= food.single_price%></ol>
+										<ol>세트:<%= food.set_price%></ol>
+									</li>
+								</a>
+							<% } %>
+						</ul>		
+					</section>
+					<% } %>
+
+				<% if (mode == 'burger') { %> <!-- 버거&세트-->
+					<section>
+						<ul class="mylist">
+							<% for (let food of foods) { %>
+								<a href="/choice?list=burger&price=<%= food.single_price%>&name=<%= food.name%>">
+									<li><img src="/images/<%= food.id%>.png">
+										<ol><%= food.name%></ol>
+										<ol>단품:<%= food.single_price%></ol>
+										<ol>세트:<%= food.set_price%></ol>
+									</li>
+								</a>
+							<% } %>
+						</ul>		
+					</section>
+					<% } %>
+
+					<% if (mode == 'side') { %> <!-- 스낵&사이드-->
+						<section>
+							<ul class="mylist">
+								<% for (let food of foods) { %>
+									<a href="/choice?list=side&price=<%= food.single_price%>&name=<%= food.name%>">
+										<li><img src="/images/<%= food.id%>.png">
+											<ol><%= food.name%></ol>
+											<ol>단품:<%= food.single_price%></ol>
+										</li>
+									</a>
+								<% } %>
+							</ul>		
+						</section>
+						<% } %>
+
+				<% if (mode == 'drink') { %> <!-- 음료-->
+					<section>
+						<ul class="mylist">
+							<% for (let food of foods) { %>
+								<a href="/choice?list=drink&price=<%= food.single_price%>&name=<%= food.name%>">
+									<li><img src="/images/<%= food.id%>.png">
+										<ol><%= food.name%></ol>
+										<ol>단품:<%= food.single_price%></ol>
+									</li>
+								</a>
+							<% } %>
+						</ul>		
+					</section>
+					<% } %>
+
+				<% if (mode == 'dessert') { %> <!-- 디저트-->
+					<section>
+						<ul class="mylist">
+							<% for (let food of foods) { %>
+								<a href="/choice?list=dessert&price=<%= food.single_price%>&name=<%= food.name%>">
+									<li><img src="/images/<%= food.id%>.png">
+										<ol><%= food.name%></ol>
+										<ol>단품:<%= food.single_price%></ol>
+									</li>
+								</a>
+							<% } %>
+						</ul>		
+					</section>
+					<% } %>
+
+				
+			</div>
+			<!-- 장바구니 -->
+			<div class="right">
+				<form method="post">
+					<div class="right-main"><h1 align=center>CART</h1></div>
+					<div class="right-menu">
+						<% for (let basket of baskets) { %>
+						<ul>
+							<li><input type="checkbox" name="menu_check" onclick="setBg(this)" style="width:100px; height:100px;" value= <%= basket.id%> ></li>
+							<li ><h3 text-align:center><%= basket.name%></h3></li>
+							<li><h3 text-align:center>X<%= basket.quantity%></h3></li>
+						</ul>
+						<% } %>
+					</div>
+					<div class="right-price" align=center>
+						<h3 text-align:center>합계 : <%= sum%> 원<h3>
+					</div>
+					<div class="right-submit" align=center>
+						<a href="/purchase">
+							<button type="button" class="button">결제</button></a>
+						<a>
+							<button type="submit" class="button">취소</button></a>
+					</div>	
+				</form>	
+			</div>
+		</div>
+		
+	</body>
+</html>
