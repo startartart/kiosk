@@ -1,0 +1,124 @@
+-- MySQL dump 10.13  Distrib 8.0.27, for macos11.6 (x86_64)
+--
+-- Host: localhost    Database: kioskdb
+-- ------------------------------------------------------
+-- Server version	8.0.27
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `kioskdb`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `kioskdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+USE `kioskdb`;
+
+--
+-- Table structure for table `baskets`
+--
+
+DROP TABLE IF EXISTS `baskets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `baskets` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) NOT NULL,
+  `price` int DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `baskets`
+--
+
+LOCK TABLES `baskets` WRITE;
+/*!40000 ALTER TABLE `baskets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `baskets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `food`
+--
+
+DROP TABLE IF EXISTS `food`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `food` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) NOT NULL,
+  `what` varchar(1) NOT NULL,
+  `single_price` varchar(20) DEFAULT NULL,
+  `set_price` varchar(20) DEFAULT NULL,
+  `picture` varchar(50) DEFAULT NULL,
+  `preference` int DEFAULT NULL,
+  `mark` varchar(20) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `food`
+--
+
+LOCK TABLES `food` WRITE;
+/*!40000 ALTER TABLE `food` DISABLE KEYS */;
+INSERT INTO `food` VALUES (3,'1955 햄버거','B','5900','7200',NULL,23,'signature','2021-12-12 08:27:48','2021-12-17 07:55:02'),(4,'더블 불고기 버거','B','4600','5700',NULL,21,'','2021-12-12 08:28:55','2021-12-18 14:47:30'),(5,'더블 치즈 버거','B','4400','5700',NULL,0,'','2021-12-12 08:29:48','2021-12-12 08:29:48'),(6,'더블 쿼터파운더 치즈 버거','B','6900','7800',NULL,103,'signature','2021-12-12 08:30:42','2021-12-17 11:55:57'),(7,'더블 필레오 피쉬 버거','B','4500','6000',NULL,9,'signature','2021-12-12 08:32:20','2021-12-17 12:13:55'),(8,'맥스파이시 상하이 버거','B','4700','5900',NULL,19,'signature','2021-12-12 08:33:04','2021-12-18 14:43:51'),(9,'맥치킨 모짜렐라 버거','B','4800','6200',NULL,134,'signature','2021-12-12 10:50:09','2021-12-18 14:43:51'),(10,'딸기 쉐이크','J','2500','',NULL,5,'','2021-12-12 10:56:43','2021-12-17 14:40:18'),(11,'딸기 칠러','J','3000','',NULL,3,'','2021-12-12 10:57:47','2021-12-17 14:40:18'),(12,'바닐라 쉐이크','J','2500','',NULL,2,'','2021-12-12 10:58:22','2021-12-16 10:01:10'),(13,'스프라이트','J','1800','',NULL,3,'','2021-12-12 10:58:44','2021-12-18 14:43:51'),(14,'치즈스틱 2조각','S','2000','',NULL,4,'','2021-12-12 10:59:51','2021-12-16 18:47:39'),(15,'치킨너겟 4조각','S','1700','',NULL,18,'','2021-12-12 11:00:35','2021-12-16 12:10:17'),(16,'치킨텐더 2조각','S','2500','',NULL,2,'','2021-12-12 11:01:22','2021-12-16 18:47:39'),(17,'상하이 치킨 스낵랩','S','2000','',NULL,1,'','2021-12-12 11:01:57','2021-12-16 18:47:39'),(18,'케이준 비프 스낵랩','S','1500','',NULL,3,'','2021-12-12 11:02:29','2021-12-16 18:47:39'),(19,'딸기 선데이 아이스크림','D','1500','',NULL,3,'','2021-12-12 11:03:38','2021-12-18 14:47:30'),(20,'딸기 오레오 플러리','D','2500','',NULL,0,'','2021-12-12 11:04:24','2021-12-12 11:04:24'),(21,'스트로베리콘','D','700','',NULL,0,'','2021-12-12 11:05:10','2021-12-12 11:05:10'),(22,'아이스크림콘','D','700','',NULL,0,'','2021-12-12 11:05:32','2021-12-12 11:05:32'),(23,'애플파이','D','1000','',NULL,1,'','2021-12-12 11:05:50','2021-12-16 10:01:41'),(24,'베이컨 토마토 디럭스 버거','B','5500','7000',NULL,3,'signature','2021-12-17 09:46:32','2021-12-17 12:14:01'),(25,'불고기 버거','B','1900','4000',NULL,0,'','2021-12-17 09:47:16','2021-12-17 09:47:16'),(26,'빅맥','B','4600','5900',NULL,0,'','2021-12-17 09:47:42','2021-12-17 09:47:42'),(27,'슈비버거','B','5500','7000',NULL,0,'','2021-12-17 09:48:13','2021-12-17 09:48:13'),(28,'치즈버거','B','2300','4500',NULL,0,'','2021-12-17 09:48:32','2021-12-17 09:48:32'),(29,'트리플 치즈 버거','B','5600','6900',NULL,0,'','2021-12-17 09:49:29','2021-12-17 09:49:29'),(30,'스트링 치즈','S','1600','',NULL,0,'','2021-12-17 09:50:38','2021-12-17 09:50:38'),(31,'후렌치 후라이','S','1700','',NULL,0,'','2021-12-17 09:51:18','2021-12-17 09:51:18'),(32,'오렌지주스','J','1800','',NULL,2,'','2021-12-17 09:52:05','2021-12-17 14:40:18'),(33,'제주 한라봉 칠러','J','2700','',NULL,11,'','2021-12-17 09:52:30','2021-12-17 14:40:18'),(34,'초코 쉐이크','J','2500','',NULL,1,'','2021-12-17 09:52:57','2021-12-17 14:40:18'),(35,'코카콜라','J','1800','',NULL,3,'','2021-12-17 09:53:39','2021-12-18 14:47:30'),(36,'코카콜라 제로','J','2000','',NULL,0,'','2021-12-17 09:54:08','2021-12-17 09:54:08'),(37,'환타','J','1800','',NULL,0,'','2021-12-17 09:54:18','2021-12-17 09:54:18'),(38,'오레오 맥플러리','D','2500','',NULL,0,'','2021-12-17 09:54:59','2021-12-17 09:54:59'),(39,'오레오 아포가토','D','3000','',NULL,0,'','2021-12-17 09:55:20','2021-12-17 09:55:20'),(40,'초코콘','D','900','',NULL,0,'','2021-12-17 09:55:59','2021-12-17 09:55:59'),(41,'츄러스','D','1500','',NULL,0,'','2021-12-17 09:56:17','2021-12-17 09:56:17');
+/*!40000 ALTER TABLE `food` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `people`
+--
+
+DROP TABLE IF EXISTS `people`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `people` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `age` int unsigned NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `people`
+--
+
+LOCK TABLES `people` WRITE;
+/*!40000 ALTER TABLE `people` DISABLE KEYS */;
+INSERT INTO `people` VALUES (1,'Tony',25,'2021-12-03 21:05:13','2021-12-03 21:05:13');
+/*!40000 ALTER TABLE `people` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-12-18 23:51:58

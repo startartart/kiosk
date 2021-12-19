@@ -6,6 +6,7 @@ const path = require('path');
 const multer = require('multer');
 const { Food, Basket } = require('../models');
 const { INTEGER } = require('sequelize/dist');
+var cron = require('node-cron');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -17,8 +18,10 @@ var storage = multer.diskStorage({
   })
   var upload = multer({ stoarge : storage})
 
-
 router.get('/', function(req, res, next) {
+  cron.schedule('1 * * * * *', function() {
+    console.log('매 5초 마다 실행');
+})
   Basket.destroy({ 
     where: {},
     truncate: true
